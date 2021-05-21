@@ -1,0 +1,11 @@
+Questo è un software per il calcolo della giacenza media del tuo conto corrente.
+
+All'avvio appare una finestra che chiede l'anno di riferimento (l'anno su cui calcolare la giacenza: in pratica se si ha l'estratto conto del 2015, allora l'anno è 2015) e il numero di cointestatari (se sei l'unico intestatario del conto allora il numero da inserire è 1, se il conto è intestato a due persone è due ecc.).
+
+Dopo aver inserito anno e numero degli intestatari, apparirà una nuova finestra che chiederà, mese giorno e importo, basta inserire il giorno, il mese (data per valuta) e l'importo del movimento effettuato (positivo o negativo che sia) e poi cliccare su continua se ci sono ancora movimenti o su calcola se questo è l'ultimo movimento (se si clicca su calcola apparirà una finestra dove saranno mostrati il saldo al 31 dicembre dell'anno e la giacenza media).
+
+Se si clicca su continua, apparirà un nuovo pulsante "modifica" e verrà aggiunti qualcosa allo spinbox in alto a sinistra che servono per modificare un movimento: basta selezionare il movimento dallo spinbox, modificare ciò che si vuole modificare, cliccare su modifica e il movimento selezionato sarà modificato.
+
+Nella toolbar c'è un pulsante scritto "Nuovo", basta cliccare lì per azzerare tutto e poter cominciare un nuovo calcolo dall'inizio.
+
+Un'ultima cosa nel titolo della finestra spunta l'anno e un numero tra parentesi che rappresenta il numero dei cointestatari precedentemente selezionato.
