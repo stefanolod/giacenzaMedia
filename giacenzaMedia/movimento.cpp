@@ -30,13 +30,17 @@ void Movimento::calcolaPeriodo(int giorno_mov_prec,
                               bool bisestile){
     Mesi m(bisestile);
 
-    if(mese_mov_prec == mese_mov_corrente){             //Bisogna distinguere i casi in cui due movimenti siano dello stesso mese o mese diverso
+    //Bisogna distinguere i casi in cui due movimenti siano dello stesso mese o mese diverso
+    if(mese_mov_prec == mese_mov_corrente){             
         if( giorno_mov_corrente == giorno_mov_prec ){
             periodo = giorno_mov_corrente;
         }else{
             periodo = giorno_mov_corrente + giorno_mov_prec;
         }
     }else{
+        //se il movimento precedente e il movimento successivo non cadono nello stesso mese,
+        //sommo i giorni mancanti per la fine del mese iniziale, i giorni dall'inizio del mese finale
+        //e i giorni calcolati dei mesi tra il mese iniziale e finale
         periodo = (m.giorni_del_mese(mese_mov_prec) - giorno_mov_prec) + giorno_mov_corrente;
 
         for(int i = mese_mov_prec + 1; i < mese_mov_corrente ; ++i){

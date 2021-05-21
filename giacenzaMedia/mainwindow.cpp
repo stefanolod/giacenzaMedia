@@ -20,6 +20,8 @@ MainWindow::~MainWindow(){
 }
 
 
+//Questo metodo da tutti i valori necessari al metodo della classe "Giacenza" per aggiungere il 
+//movimento relativo ai dati selezionati, inoltre aggiunge il movimento al combobox in modo da poterlo scegliere
 void MainWindow::on_continua_button_pressed(){
     if( g.getList().empty() ){
         ui->modifica_button->show();
@@ -38,7 +40,8 @@ void MainWindow::on_continua_button_pressed(){
     }
 }
 
-void MainWindow::on_mesi_spinbox_valueChanged(int arg1){    //Gestisce lo spinbox dei giorni in base al mese scelto
+//Regola lo spinbox dei giorni in base al mese selezionato dallo spinbox dei mesi
+void MainWindow::on_mesi_spinbox_valueChanged(int arg1){    
     if( arg1 == 2){
         if( g.getBisestile() ){
             ui->giorni_spinbox->setMaximum(29);
@@ -52,8 +55,11 @@ void MainWindow::on_mesi_spinbox_valueChanged(int arg1){    //Gestisce lo spinbo
     }
 }
 
+//Raccoglie tutti i dati necessari per il calcolo del saldo e la giacenza media 
+//gestita dalla classe "Giacenza"
 void MainWindow::on_calcola_button_pressed(){
-    if( !g.getList().empty() ){         //Se si forma un momento vuoto tra l'ultimo movimento e la fine dell'anno, questo va coperto
+    //Se si forma un momento vuoto tra l'ultimo movimento e la fine dell'anno, questo va coperto
+    if( !g.getList().empty() ){         
         if( g.getList().back().getGiorno() != 31 && g.getList().back().getMese() != 12){
             g.aggiungiMovimento(31, 12, 0.0);
         }
@@ -78,6 +84,8 @@ void MainWindow::on_actionNuovo_triggered(){
     ui->giorni_spinbox->setMaximum(31);
 }
 
+//Questo è lo slot che assegna i valori dati dalla finestra annoDialog e trattati 
+//come necessità richiede
 void MainWindow::setArgPass(int anno, int n_intestatari){
     g.calcolaBisestile( anno);
     g.setIntestatari( n_intestatari );
@@ -87,6 +95,7 @@ void MainWindow::setArgPass(int anno, int n_intestatari){
     this->show();
 }
 
+//Questa funzione mostra i valori del movimento selezionato
 void MainWindow::on_lista_comboBox_highlighted(const QString &arg1){
     int counter = arg1.toInt();
 
@@ -101,6 +110,8 @@ void MainWindow::on_lista_comboBox_highlighted(const QString &arg1){
     }
 }
 
+//Raccoglie i dati e il passa alla classe "Giacenza" 
+//per poter modificare il movimento selezionato
 void MainWindow::on_modifica_button_pressed(){
     double importo = ui->importo_text->text().toDouble();
     int counter = ui->lista_comboBox->currentText().toInt();

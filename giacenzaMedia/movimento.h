@@ -20,6 +20,8 @@ public:
 
     double getImporto();
 
+    //Avendo i dati inizio e fine del periodo tra il penultimo e ultimo Movimento,
+    //con questo metodo calcolo il numero dei girno che cadono in quel periodo
     void calcolaPeriodo(int giorno_mov_prec, int giorno_mov_corrente,
                        int mese_mov_prec, int mese_mov_corrente, bool bisestile);
 

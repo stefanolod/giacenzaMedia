@@ -8,13 +8,13 @@ annoDialog::annoDialog(QWidget *parent) :
     this->setWindowTitle("Giacenza Media");
 }
 
-annoDialog::~annoDialog()
-{
+annoDialog::~annoDialog(){
     delete ui;
 }
 
-void annoDialog::on_ok_button_pressed()
-{
+//È necessario conoscere l'anno di riferimento e il numero dei cointestatari del conto
+//che sarà passato alla finestra principale sfruttando il signal e lo slot
+void annoDialog::on_ok_button_pressed(){
     int anno = ui->anno_spinbox->text().toInt();
     int n_intestatari = ui->intestatari_spinbox->text().toInt();
 

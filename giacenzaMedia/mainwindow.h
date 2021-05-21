@@ -19,6 +19,7 @@ public:
     ~MainWindow();
 
 public slots:
+    //Questo slot serve a prendere i valori passati dalla finestra di dialogo iniziale
     void setArgPass(int anno, int n_intestatari);
 
 private slots:
@@ -31,6 +32,8 @@ private slots:
 
     void on_actionNuovo_triggered();
 
+    //Questo rappresenta un compobox dove sono raccolti tutti i movimenti
+    //se l'utente ne seleziona uno, questo metodo si occupa di mostrare i valori del movimento
     void on_lista_comboBox_highlighted(const QString &arg1);
 
     void on_modifica_button_pressed();

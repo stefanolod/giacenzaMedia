@@ -25,7 +25,7 @@ public:
 
     std::list<Movimento> getList();
 
-    void distruggi_lista();
+    void distruggi_lista();     //Molto semplicemente azzera il saldo e la giacenza e cancella la lista
 
     bool modifica(double importo, int counter, int giorno, int mese);
 private:

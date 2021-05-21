@@ -20,7 +20,7 @@ private slots:
     void on_ok_button_pressed();
 
 signals:
-    void setArgPass(int anno, int n_intestatari);
+    void setArgPass(int anno, int n_intestatari);   
 
 private:
     Ui::annoDialog *ui;

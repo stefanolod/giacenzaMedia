@@ -15,6 +15,8 @@ bool Giacenza::getBisestile(){
     return this->bisestile;
 }
 
+//in questa implementazione del metodo si deve per forza lavorare su due movimenti
+//per conoscere il periodo di inizio e di fine che intercorre tra un movimento e l'altro.
 void Giacenza::aggiungiMovimento(int giorno, int mese, double importo){
     Movimento mov_current;
     Movimento mov_prec = m.back();
@@ -35,7 +37,10 @@ void Giacenza::aggiungiMovimento(int giorno, int mese, double importo){
 }
 
 void Giacenza::calcola(){
-    int num = 0;        //Rappresenta il numeratore da dividere per 365 (o 366 se anno bisestile), per il calcolo della giacenza media
+    //Rappresenta il numeratore da dividere per 365 (o 366 se anno bisestile), 
+    //per il calcolo della giacenza media, sarebbe la somma del saldo presente nel conto
+    //in ogni giorno dell'anno che va poi diviso per 365(o 366).
+    int num = 0;        
 
     for(Movimento movimento: m){
         this->saldo += movimento.getImporto();
@@ -48,9 +53,12 @@ void Giacenza::calcola(){
         this->giacenza = num/365.0;
     }
 
-    this->saldo /= this->n_intestatari;     //Se il conto è cointestato, il saldo e la giacenza va diviso per il numero di cointestati
+    //Se il conto è cointestato, il saldo e la giacenza va diviso per il numero di cointestati
+    this->saldo /= this->n_intestatari;     
     this->giacenza /= this->n_intestatari;
 
+    //Ovviamente se il saldo o la giacenza (o entrambi) risultano meno di un centesimo di euro
+    //va segnato come un importo nullo.
     if( this->saldo < 0.01 ){
         this->saldo = 0;
     }
@@ -70,6 +78,8 @@ void Giacenza::distruggi_lista(){
     this->saldo = 0.0;
 }
 
+//in questa implementazione del metodo si deve per forza lavorare su due movimenti
+//per conoscere il periodo di inizio e di fine che intercorre tra un movimento e l'altro.
 bool Giacenza::modifica( double importo, int counter, int giorno, int mese){
     if( m.size() == 1){                 //Controllo se la lista è vuota o piena
         m.back().setImporto( importo );
