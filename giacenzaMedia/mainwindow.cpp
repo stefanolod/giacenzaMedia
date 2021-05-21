@@ -33,10 +33,11 @@ void MainWindow::on_continua_button_pressed(){
         int mese = ui->mesi_spinbox->text().toInt();
         double importo = ui->importo_text->text().toDouble();
 
-        ui->lista_comboBox->addItem(" "  + QString::number( g.getList().back().getCounter() ) );
         ui->importo_text->clear();
 
         g.aggiungiMovimento(giorno, mese, importo);
+        
+        ui->lista_comboBox->addItem(" "  + QString::number( g.getList().back().getCounter() ) );
     }
 }
 
